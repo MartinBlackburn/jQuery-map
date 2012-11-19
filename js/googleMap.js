@@ -6,13 +6,13 @@ GoogleMap = function(mapContainer)
     var geocoder = new google.maps.Geocoder();
     var mapOptions;
     
-    //setDefault map options
+    //set default map options
     updateMapOptions();
     
     //get the address and display it    
     GoogleMap.prototype.render = function()
     {
-        //if no address, warn user
+        //if no address, output an error
         if(!address) 
         {  
             err("The address element needs setting.");
@@ -63,7 +63,7 @@ GoogleMap = function(mapContainer)
         } 
     } 
     
-    //output an error to the console when needed
+    //output an error to the console
     function err(message)  
     {  
         var err = new Error();  
