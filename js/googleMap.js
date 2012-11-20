@@ -1,17 +1,25 @@
-GoogleMap = function(mapContainer) 
+GoogleMap = function() 
 {   
-    //varibles
+    //variables
     var address;
     var zoomLevel = 10;
     var geocoder = new google.maps.Geocoder();
     var mapOptions;
+    var mapContainer;
     
     //set default map options
     updateMapOptions();
     
-    //get the address and display it    
+    //get the map and display it    
     GoogleMap.prototype.render = function()
     {
+        //if no map container, output an error
+        if(!mapContainer) 
+        {  
+            err("The map container needs setting.");
+            return false;
+        }
+        
         //if no address, output an error
         if(!address) 
         {  
@@ -19,7 +27,7 @@ GoogleMap = function(mapContainer)
             return false;
         }
         
-        var map = new google.maps.Map(mapContainer[0], mapOptions);
+        var map = new google.maps.Map(mapContainer, mapOptions);
         
         geocoder.geocode({'address': address}, function(results, status)
         {
@@ -36,6 +44,13 @@ GoogleMap = function(mapContainer)
                 return false;
             }
         });
+    }
+    
+    
+    //set the element which contains the address
+    GoogleMap.prototype.setMapElement = function(element)
+    {
+        mapContainer = element.get(0);
     }
     
     
@@ -72,13 +87,3 @@ GoogleMap = function(mapContainer)
         throw(err);  
     }  
 };
-
-$(function() 
-{
-    $(".googleMap").each(function()
-    {
-        var googleMap = new GoogleMap($(this));
-        googleMap.setAddressElement($(".address"));
-        googleMap.render();
-    });
-});

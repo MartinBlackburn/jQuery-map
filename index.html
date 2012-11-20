@@ -28,7 +28,27 @@
         </div>
     </div>
     
-    <!-- Fader -->
+    <!-- Google maps -->
     <script src="js/googleMap.js" type="text/javascript"></script>
+    
+    <script type="text/javascript">
+	    $(function() 
+		{
+	        //setup new googleMap
+	        var googleMap = new GoogleMap();
+	        
+	        //set the zoom level
+	        googleMap.setZoomLevel(12);
+
+	        //pass the element that contains the address
+	        googleMap.setAddressElement($(".address"));
+
+	        //pass the element to draw the map in
+	        googleMap.setMapElement($(".googleMap"));
+
+	        //render the map
+	        googleMap.render();
+		});
+    </script>
 </body>
 </html>
