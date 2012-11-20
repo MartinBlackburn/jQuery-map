@@ -1,6 +1,6 @@
-#jQuery map
+#Responsive Google map
 
-A responsive map using jQuery and Google maps
+A responsive map using jQuery and the Google maps API
 
 ##How it works
 Include the googleMap.js, then set it up using the following.
