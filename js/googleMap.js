@@ -42,14 +42,6 @@ GoogleMap = function()
                 return false;
             }
         });
-        
-        var layer = new google.maps.FusionTablesLayer({
-            query: {
-              select: 'Address',
-              from: '1ZfsmfJrHmHtFVgM4zs2IRI-oD51Ast8l_tM-zJM'
-            }
-          });
-        layer.setMap(map);
     }
     
     //add a marker to the map
