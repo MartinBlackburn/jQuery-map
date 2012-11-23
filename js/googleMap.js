@@ -37,13 +37,37 @@ GoogleMap = function()
             {
                 setCenter(results[0].geometry.location);
                 addMarker(results[0].geometry.location);
+                drawCircle(); 
             } else {
                 err("Geocode was not successful for the following reason: " + status);
                 return false;
             }
         });
+        
+        var layer = new google.maps.FusionTablesLayer({
+            query: {
+              select: 'Address',
+              from: '1ZfsmfJrHmHtFVgM4zs2IRI-oD51Ast8l_tM-zJM'
+            }
+          });
+        layer.setMap(map);
     }
     
+    //draw a Circle on the map
+    function drawCircle()
+    {
+        var circleOptions = {
+                strokeColor: '#FF0000',
+                strokeOpacity: 0.8,
+                strokeWeight: 2,
+                fillColor: '#FF0000',
+                fillOpacity: 0.35,
+                map: map,
+                center: mapCenter,
+                radius: 1000
+        };
+        var cityCircle = new google.maps.Circle(circleOptions);
+    }
     
     //add a marker to the map
     function addMarker(latLng)
