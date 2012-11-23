@@ -4,8 +4,10 @@ GoogleMap = function()
     var address;
     var zoomLevel = 10;
     var geocoder = new google.maps.Geocoder();
-    var mapOptions;
     var mapContainer;
+    var map;
+    var mapOptions;
+    var mapCenter;
     
     //set default map options
     updateMapOptions();
@@ -27,23 +29,37 @@ GoogleMap = function()
             return false;
         }
         
-        var map = new google.maps.Map(mapContainer, mapOptions);
+        map = new google.maps.Map(mapContainer, mapOptions);
         
         geocoder.geocode({'address': address}, function(results, status)
         {
             if (status == google.maps.GeocoderStatus.OK)
             {
-                map.setCenter(results[0].geometry.location);
-                
-                var marker = new google.maps.Marker({
-                    map: map,
-                    position: results[0].geometry.location
-                });
+                setCenter(results[0].geometry.location);
+                addMarker(results[0].geometry.location);
             } else {
                 err("Geocode was not successful for the following reason: " + status);
                 return false;
             }
         });
+    }
+    
+    
+    //add a marker to the map
+    function addMarker(latLng)
+    {
+        var marker = new google.maps.Marker({
+            map: map,
+            position: latLng
+        }); 
+    }
+    
+    
+    //set center of the map
+    function setCenter(latLng)
+    {
+        mapCenter = latLng;
+        map.setCenter(latLng);
     }
     
     
