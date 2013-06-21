@@ -25,4 +25,4 @@ googleMap.render();
 [View it in action here](http://martinblackburn.github.com/jQuery-map/)
 
 ###Notes
-This was written using jQuery 1.8.2
+This will working using jQuery 1.10.1
