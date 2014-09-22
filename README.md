@@ -12,8 +12,8 @@ var googleMap = new GoogleMap();
 //set the zoom level
 googleMap.setZoomLevel(12);
 
-//pass the element that contains the address
-googleMap.setAddressElement($(".address"));
+//pass the address
+googleMap.setAddress($(".address"));
 
 //pass the element to draw the map in
 googleMap.setMapElement($(".googleMap"));
@@ -25,4 +25,4 @@ googleMap.render();
 [View it in action here](http://martinblackburn.github.com/jQuery-map/)
 
 ###Notes
-This will working using jQuery 1.10.1
+This will work using jQuery 1.11.1
