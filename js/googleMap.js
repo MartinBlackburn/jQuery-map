@@ -70,9 +70,9 @@ GoogleMap = function()
     
     
     //set the element which contains the address
-    GoogleMap.prototype.setAddressElement = function(element)
+    GoogleMap.prototype.setAddress = function(value)
     {
-        address = element.first().text();
+        address = value.trim();
     }
     
     

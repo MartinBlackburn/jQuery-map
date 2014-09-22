@@ -38,20 +38,23 @@
     <script type="text/javascript">
 	    $(function() 
 		{
-	        //setup new googleMap
-	        var googleMap = new GoogleMap();
-	        
-	        //set the zoom level
-	        googleMap.setZoomLevel(12);
+	        $(".googleMap").each(function()
+            {
+	          //setup new googleMap
+	            var googleMap = new GoogleMap();
+	            
+	            //set the zoom level
+	            googleMap.setZoomLevel(12);
 
-	        //pass the element that contains the address
-	        googleMap.setAddressElement($(".address"));
+	            //pass the element that contains the address
+	            googleMap.setAddress($(".address").text());
 
-	        //pass the element to draw the map in
-	        googleMap.setMapElement($(".googleMap"));
+	            //pass the element to draw the map in
+	            googleMap.setMapElement($(this));
 
-	        //render the map
-	        googleMap.render();
+	            //render the map
+	            googleMap.render();
+            });
 		});
     </script>
 </body>
